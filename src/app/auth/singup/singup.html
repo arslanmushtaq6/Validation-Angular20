@@ -1,0 +1,55 @@
+<div class="h-[calc(100vh-64px)] flex justify-center items-center bg-gray-100">
+    <div class="w-full max-w-md bg-blue-400 rounded-lg  shadow-lg p-8 flex flex-col items-center">
+        <h2 class="text-white text-2xl uppercase font-medium">Log In</h2>
+ <p>{{addFormGroup.value|json }}</p>
+  <p>isformValid: {{addFormGroup.status }}</p>
+        <form [formGroup]="addFormGroup" action="" method="post"
+            class="w-full mt-10 bg-white p-6 rounded-md shadow-md flex flex-col gap-4">
+
+            <input type="text" name="username" required placeholder="Enter Username" required autocomplete="username"
+                formControlName="username"
+                class="border border-gray-300 rounded placeholder-gray-400 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400">
+
+            @if (addFormGroup.controls.username.touched && addFormGroup.controls.username.hasError('required')) {
+            <span class="text-red-400 px-1">Username is Required</span>
+            }
+
+            <input type="email" name="email" placeholder="Enter Email Address" autocomplete="email"
+                formControlName="email"
+                class="border border-gray-300 rounded placeholder-gray-400 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400">
+            @if (addFormGroup.controls.email.touched && addFormGroup.controls.email.hasError('required')) {
+            <span class="text-red-400 px-1">Email is required</span>
+            }
+
+            @if (addFormGroup.controls.email.touched && addFormGroup.controls.email.hasError('email')) {
+            <span class="text-red-400 px-1">Enter a Valid Email</span>
+            }
+
+            <input type="password" name="password" placeholder="Enter Password" autocomplete="current-password"
+                formControlName="password"
+                class="border border-gray-300 placeholder-gray-400 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400">
+            @if (addFormGroup.get('password')?.invalid && addFormGroup.get('password')?.touched) {
+            <span class="text-red-400 px-1">Password is required</span>
+            }
+
+            @if (addFormGroup.get('password')?.touched && addFormGroup.controls.password.hasError('minlength')) {
+            <span class="text-red-400 px-1">Minimum 8 characters required</span>
+            }
+
+            <input type="password" name="confirmpassword" placeholder="Confirm Password"
+                autocomplete="current-password" formControlName="confirmpassword"
+                class="border border-gray-300 placeholder-gray-400 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400">
+
+                @if (addFormGroup.hasError('passwordMisMatch') && addFormGroup.get('confirmpassword')?.touched) {
+                    <span class="text-red-700 px-1">Password donot Match</span>
+                }
+                @else if (!addFormGroup.hasError('passwordMisMatch') && addFormGroup.get('confirmpassword')?.value && addFormGroup.get('confirmpassword')?.touched) {
+                    <span class="text-green-700 px-1">Password Match</span>
+                }
+
+            <button type="button" (click)="loggedIn()" [disabled]="addFormGroup.invalid"
+                class="bg-blue-400 text-white px-4 py-3 rounded cursor-pointer">Login In</button>
+        </form>
+
+    </div>
+</div>

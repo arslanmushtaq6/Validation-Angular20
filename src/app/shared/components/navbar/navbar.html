@@ -1,0 +1,30 @@
+<div class="bg-gray-900 w-full h-20">
+
+    <div class="flex h-full items-center p-6 justify-between">
+
+        <div class="text-white font-medium">
+            <a href="#"><span class="text-blue-400">B</span>ook<span class="text-blue-400">S</span>tore</a>
+        </div>
+
+        <div class=" text-white">
+            <ul class="hidden md:flex space-x-6 font-medium">
+                <li><a routerLink="/home" routerLinkActive="text-red-400 underline" class="hover:text-blue-400 hover:underline">Home</a></li>
+                <li><a routerLink="/services" routerLinkActive="text-red-400 underline" class="hover:text-blue-400 hover:underline">Services</a></li>
+                <li><a routerLink="/aboutus" routerLinkActive="text-red-400 underline" class="hover:text-blue-400 hover:underline">About Us</a></li>
+                <li><a routerLink="/contactus" routerLinkActive="text-red-400 underline" class="hover:text-blue-400 hover:underline">Contact Us</a></li>
+                <li><a routerLink="/addbooks" routerLinkActive="text-red-400 underline" class="hover:text-blue-400 hover:underline">Add Books</a></li>
+            </ul>
+        </div>
+
+        <div class="hidden md:flex gap-4">
+            <!-- <a routerLink="/login">
+            <button type="button" class="text-white bg-blue-400 hover:bg-transparent hover:border hover:border-blue-400 py-2 px-6 rounded cursor-pointer ">Log In</button>
+            </a> -->
+            <a routerLink="/signup">
+            <button type="button" routerLink="/login" class="text-white bg-transparent hover:bg-blue-400 py-2 px-6 rounded cursor-pointer border border-blue-400">Log In</button>
+            </a>
+        </div>
+
+    </div>
+
+</div>

@@ -1,0 +1,71 @@
+<div class="h-[calc(100vh-64px)] flex justify-around items-center bg-gray-100">
+    <div class="w-full max-w-md bg-blue-400 rounded-lg  shadow-lg p-8 flex flex-col items-center">
+        <h2 class="text-white text-2xl uppercase font-medium">Add Books</h2>
+
+        <form [formGroup]="addBooksForm" class="w-full mt-10 bg-white p-6 rounded-md shadow-md flex flex-col gap-4">
+
+            <input type="text" name="language" formControlName="Language"
+                placeholder="Enter Language (e.g English, Urdu, Hindi)"
+                class="border border-gray-300 rounded placeholder-gray-400 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400">
+
+            <input type="text" name="availability" formControlName="Availability" required
+                placeholder="Enter Availability (e.g Buy or Rent)"
+                class="border border-gray-300 placeholder-gray-400 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400">
+
+            <input type="text" name="condition" formControlName="Condition" required
+                placeholder="Enter Condition (e.g New or Used)"
+                class="border border-gray-300 placeholder-gray-400 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400">
+
+            <input type="text" name="quantity" formControlName="Quantity" required
+                placeholder="Enter Quantity (e.g 1 - 100)"
+                class="border border-gray-300 placeholder-gray-400 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400">
+
+            <select name="" formControlName="SelectedOptions"
+                class="border border-gray-300 placeholder-gray-400 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400">
+                <option value="select category">Select Category</option>
+                <option value="horror">Horror</option>
+                <option value="poetry">Poetry</option>
+                <option value="comics">Comics</option>
+                <option value="others">Others</option>
+            </select>
+
+
+            @if (addBooksForm.get('SelectedOptions')?.value === 'others') {
+            <input type="text" name="" placeholder="Enter Category" formControlName="OtherCategory"
+                class="w-full border border-gray-300 placeholder-gray-400 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400">
+            }
+
+            <button type="button" (click)="displayValue()"
+                class="bg-blue-400 text-white px-4 py-3 rounded cursor-pointer">Add Books</button>
+
+        </form>
+
+        <!-- @if (submittedData) {
+        <p>Language: {{ submittedData.Language }}</p>
+        <p>Availability: {{ submittedData.Availability }}</p>
+        <p>Condition: {{ submittedData.Condition }}</p>
+        <p>Quantity: {{ submittedData.Quantity }}</p>
+        <p>Category: {{ submittedData.SelectedOptions }}</p>
+        <p>Category:
+            {{ submittedData.SelectedOptions === 'others' ? submittedData.OtherCategory : submittedData.SelectedOptions
+            }}
+        </p>
+        } -->
+
+    </div>
+
+
+    <div class="bg-blue-500 w-full max-w-md h-40 p-6 text-white">
+        @if (submittedData) {
+        <p><strong>Language:</strong> &nbsp; {{ submittedData.Language }}</p>
+        <p><strong>Availability:</strong> &nbsp; {{ submittedData.Availability }}</p>
+        <p><strong>Condition:</strong> &nbsp; {{ submittedData.Condition }}</p>
+        <p><strong>Quantity:</strong> &nbsp; {{ submittedData.Quantity }}</p>
+        <p><strong>Category:</strong>
+            {{ submittedData.SelectedOptions === 'others' ? submittedData.OtherCategory : submittedData.SelectedOptions
+            }}
+        </p>
+        }
+    </div>
+
+</div>
